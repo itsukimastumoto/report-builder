@@ -1,0 +1,10 @@
+jcb/input/*.csv
+jcb/output/
+jcb/tasks/
+oasis-monthly/input/*.xlsx
+oasis-monthly/input/*.csv
+oasis-monthly/input/*.png
+oasis-monthly/output/
+__pycache__/
+*.pyc
+.DS_Store
