@@ -52,9 +52,20 @@ def generate_bar_chart(
     if dates and isinstance(dates[0], str):
         dates = [datetime.strptime(d, "%Y-%m-%d") for d in dates]
 
-    ax.bar(dates, values, color=color, width=bar_width)
+    bars = ax.bar(dates, values, color=color, width=bar_width)
     ax.set_title(title, fontsize=9, pad=4, fontweight="bold")
     ax.set_ylabel(ylabel, fontsize=7, labelpad=2)
+
+    # 棒グラフの上にデータラベルを表示
+    for bar, val in zip(bars, values):
+        if val > 0:
+            ax.text(
+                bar.get_x() + bar.get_width() / 2,
+                bar.get_height(),
+                f"{int(val):,}",
+                ha="center", va="bottom",
+                fontsize=5, color="#333333",
+            )
 
     if bar_width > 1:
         # 週次データ: "M/D週" 表示、各データポイントにティック

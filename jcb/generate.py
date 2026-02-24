@@ -21,6 +21,7 @@ import copy
 import datetime
 import re
 import shutil
+import subprocess
 import sys
 import tempfile
 import unicodedata
@@ -674,6 +675,9 @@ def main():
     print(f"\n完了! 出力先: {output_file}")
     print(f"  タスクフォルダ: {task_dir}")
     print(f"  スライド数: {len(client_names)}")
+
+    # 生成したPPTXを自動で開く
+    subprocess.Popen(["open", str(output_file)])
 
 
 if __name__ == "__main__":
